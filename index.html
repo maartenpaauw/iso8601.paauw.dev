@@ -3,34 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO 8601 Duration Parser & Converter - Free Online Tool | ISO8601.guru</title>
+    <title>ISO 8601 Duration Parser & Converter - Free Online Tool</title>
     <meta name="description" content="Free ISO 8601 duration parser, decoder, and encoder. Convert PT360S to 6 minutes instantly. Parse and validate ISO 8601 duration notation with cascading normalization. Best alternative to crontab.guru for durations.">
     <meta name="keywords" content="ISO 8601, duration parser, ISO 8601 duration, PT notation, duration converter, ISO duration decoder, ISO duration encoder, time duration calculator, P1Y2M3D parser, duration notation, ISO 8601 tool, crontab guru alternative">
-    <meta name="author" content="ISO8601.guru">
+    <meta name="author" content="Maarten Paauw">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://iso8601.guru/">
-    
+    <link rel="canonical" href="https://iso8601.paauw.dev/">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://iso8601.guru/">
+    <meta property="og:url" content="https://iso8601.paauw.dev/">
     <meta property="og:title" content="ISO 8601 Duration Parser & Converter - Free Online Tool">
     <meta property="og:description" content="Free ISO 8601 duration parser and converter. Decode PT360S to 6 minutes, encode durations, and validate ISO 8601 notation instantly.">
-    <meta property="og:image" content="https://iso8601.guru/og-image.png">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://iso8601.guru/">
+    <meta property="twitter:url" content="https://iso8601.paauw.dev/">
     <meta property="twitter:title" content="ISO 8601 Duration Parser & Converter">
     <meta property="twitter:description" content="Free ISO 8601 duration parser and converter. Decode PT360S to 6 minutes instantly.">
-    <meta property="twitter:image" content="https://iso8601.guru/og-image.png">
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "ISO 8601 Duration Guru",
-      "url": "https://iso8601.guru/",
+      "url": "https://iso8601.paauw.dev/",
       "description": "Free online ISO 8601 duration parser, decoder, and encoder with automatic cascading normalization",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
@@ -48,7 +46,7 @@
       ]
     }
     </script>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;600;700&family=Fraunces:wght@300;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -76,7 +74,7 @@
             color: var(--text-primary);
             min-height: 100vh;
             padding: 2rem 1rem;
-            background-image: 
+            background-image:
                 repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 107, 53, 0.03) 2px, rgba(255, 107, 53, 0.03) 4px),
                 radial-gradient(circle at 20% 30%, rgba(247, 183, 49, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(92, 216, 90, 0.05) 0%, transparent 50%);
@@ -404,9 +402,9 @@
             <h2 class="card-title">Decode ISO 8601 Duration</h2>
             <div class="input-group">
                 <label for="decode-input">ISO 8601 Duration String</label>
-                <input 
-                    type="text" 
-                    id="decode-input" 
+                <input
+                    type="text"
+                    id="decode-input"
                     placeholder="P3Y6M4DT12H30M5S"
                     spellcheck="false"
                 >
@@ -419,7 +417,7 @@
             </div>
             <div class="explanation" id="decode-explanation" style="display: none;"></div>
             <div class="totals" id="decode-totals" style="display: none;"></div>
-            
+
             <div class="examples">
                 <button class="example-btn" onclick="setExample('P1Y')">1 Year</button>
                 <button class="example-btn" onclick="setExample('P3M')">3 Months</button>
@@ -499,11 +497,11 @@
         function parseDuration(durationString) {
             const pattern = /^P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/;
             const matches = durationString.match(pattern);
-            
+
             if (!matches) {
                 return null;
             }
-            
+
             return {
                 years: parseInt(matches[1]) || 0,
                 months: parseInt(matches[2]) || 0,
@@ -520,7 +518,7 @@
             let duration = 'P';
             let hasDate = false;
             let hasTime = false;
-            
+
             if (components.years > 0) {
                 duration += components.years + 'Y';
                 hasDate = true;
@@ -537,12 +535,12 @@
                 duration += components.days + 'D';
                 hasDate = true;
             }
-            
+
             if (components.hours > 0 || components.minutes > 0 || components.seconds > 0) {
                 duration += 'T';
                 hasTime = true;
             }
-            
+
             if (components.hours > 0) {
                 duration += components.hours + 'H';
             }
@@ -552,14 +550,14 @@
             if (components.seconds > 0) {
                 duration += components.seconds + 'S';
             }
-            
+
             return (hasDate || hasTime) ? duration : 'P0D';
         }
 
         // Explain duration in plain English
         function explainDuration(components) {
             const parts = [];
-            
+
             if (components.years > 0) parts.push(`${components.years} year${components.years !== 1 ? 's' : ''}`);
             if (components.months > 0) parts.push(`${components.months} month${components.months !== 1 ? 's' : ''}`);
             if (components.weeks > 0) parts.push(`${components.weeks} week${components.weeks !== 1 ? 's' : ''}`);
@@ -567,11 +565,11 @@
             if (components.hours > 0) parts.push(`${components.hours} hour${components.hours !== 1 ? 's' : ''}`);
             if (components.minutes > 0) parts.push(`${components.minutes} minute${components.minutes !== 1 ? 's' : ''}`);
             if (components.seconds > 0) parts.push(`${components.seconds} second${components.seconds !== 1 ? 's' : ''}`);
-            
+
             if (parts.length === 0) return 'Zero duration';
             if (parts.length === 1) return parts[0];
             if (parts.length === 2) return parts.join(' and ');
-            
+
             const last = parts.pop();
             return parts.join(', ') + ', and ' + last;
         }
@@ -579,7 +577,7 @@
         // Calculate approximate totals
         function calculateTotals(components) {
             // Approximate calculations (months = 30.44 days, years = 365.25 days)
-            const totalDays = 
+            const totalDays =
                 (components.years * 365.25) +
                 (components.months * 30.44) +
                 (components.weeks * 7) +
@@ -587,11 +585,11 @@
                 (components.hours / 24) +
                 (components.minutes / 1440) +
                 (components.seconds / 86400);
-            
+
             const totalHours = totalDays * 24;
             const totalMinutes = totalHours * 60;
             const totalSeconds = totalMinutes * 60;
-            
+
             return {
                 days: totalDays.toFixed(2),
                 hours: totalHours.toFixed(2),
@@ -603,31 +601,31 @@
         // Cascade values (e.g., 90 seconds -> 1 minute 30 seconds)
         function cascadeValues(components) {
             let c = {...components};
-            
+
             // Seconds to minutes
             if (c.seconds >= 60) {
                 c.minutes += Math.floor(c.seconds / 60);
                 c.seconds = c.seconds % 60;
             }
-            
+
             // Minutes to hours
             if (c.minutes >= 60) {
                 c.hours += Math.floor(c.minutes / 60);
                 c.minutes = c.minutes % 60;
             }
-            
+
             // Hours to days
             if (c.hours >= 24) {
                 c.days += Math.floor(c.hours / 24);
                 c.hours = c.hours % 24;
             }
-            
+
             // Convert any existing weeks to days first (we'll recalculate weeks later if needed)
             if (c.weeks > 0) {
                 c.days += c.weeks * 7;
                 c.weeks = 0;
             }
-            
+
             // Days to months and years (approximately 30.44 days per month, 365.25 days per year)
             if (c.days >= 365) {
                 // For very large day counts, convert to years first
@@ -635,26 +633,26 @@
                 c.years += yearsToAdd;
                 c.days = Math.round(c.days - (yearsToAdd * 365.25));
             }
-            
+
             // Remaining days to months (approximately 30.44 days per month)
             if (c.days >= 30) {
                 const monthsToAdd = Math.floor(c.days / 30.44);
                 c.months += monthsToAdd;
                 c.days = Math.round(c.days - (monthsToAdd * 30.44));
             }
-            
+
             // Months to years
             if (c.months >= 12) {
                 c.years += Math.floor(c.months / 12);
                 c.months = c.months % 12;
             }
-            
+
             // Remaining days to weeks (only if < 30 days)
             if (c.days >= 7 && c.days < 30) {
                 c.weeks = Math.floor(c.days / 7);
                 c.days = c.days % 7;
             }
-            
+
             return c;
         }
 
@@ -667,7 +665,7 @@
 
         decodeInput.addEventListener('input', function() {
             const value = this.value.trim().toUpperCase();
-            
+
             if (!value) {
                 decodeOutput.innerHTML = 'Enter a duration above<button class="copy-btn" id="decode-copy-btn" onclick="copyToClipboard(\'decode\')" style="display: none;">📋 Copy</button>';
                 decodeOutput.classList.remove('error');
@@ -676,9 +674,9 @@
                 currentExplanation = '';
                 return;
             }
-            
+
             const parsed = parseDuration(value);
-            
+
             if (!parsed) {
                 decodeOutput.innerHTML = '❌ Invalid ISO 8601 duration format<button class="copy-btn" id="decode-copy-btn" onclick="copyToClipboard(\'decode\')" style="display: none;">📋 Copy</button>';
                 decodeOutput.classList.add('error');
@@ -687,19 +685,19 @@
                 currentExplanation = '';
                 return;
             }
-            
+
             decodeOutput.classList.remove('error');
-            
+
             // Apply cascading to normalize the duration
             const cascaded = cascadeValues(parsed);
             const explanation = explainDuration(cascaded);
-            
+
             // Build normalized duration string
             const normalizedDuration = buildDuration(cascaded);
             currentExplanation = explanation;
-            
+
             decodeOutput.innerHTML = `✓ ${explanation}<button class="copy-btn" id="decode-copy-btn" onclick="copyToClipboard('decode')">📋 Copy</button>`;
-            
+
             // Show detailed explanation
             decodeExplanation.style.display = 'block';
             decodeExplanation.innerHTML = `
@@ -709,13 +707,13 @@
                 Years: ${cascaded.years} • Months: ${cascaded.months} • Weeks: ${cascaded.weeks} • Days: ${cascaded.days}<br>
                 Hours: ${cascaded.hours} • Minutes: ${cascaded.minutes} • Seconds: ${cascaded.seconds}
             `;
-            
+
             // Show totals (using cascaded values) - only show non-zero components
             const totals = calculateTotals(cascaded);
             decodeTotals.style.display = 'block';
-            
+
             let totalsHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">';
-            
+
             // Years
             const totalYears = cascaded.years + cascaded.months / 12;
             if (totalYears > 0) {
@@ -726,7 +724,7 @@
                     </div>
                 `;
             }
-            
+
             // Months
             const totalMonths = cascaded.years * 12 + cascaded.months;
             if (totalMonths > 0) {
@@ -737,7 +735,7 @@
                     </div>
                 `;
             }
-            
+
             // Weeks
             const totalWeeks = parseFloat(totals.days) / 7;
             if (totalWeeks > 0) {
@@ -748,7 +746,7 @@
                     </div>
                 `;
             }
-            
+
             // Days
             if (parseFloat(totals.days) > 0) {
                 totalsHTML += `
@@ -758,13 +756,13 @@
                     </div>
                 `;
             }
-            
+
             totalsHTML += '</div>';
-            
+
             // Add time components on separate line if any exist
             if (parseFloat(totals.hours) > 0 || parseFloat(totals.minutes) > 0 || parseFloat(totals.seconds) > 0) {
                 totalsHTML += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">';
-                
+
                 if (parseFloat(totals.hours) > 0) {
                     totalsHTML += `
                         <div class="total-item">
@@ -773,7 +771,7 @@
                         </div>
                     `;
                 }
-                
+
                 if (parseFloat(totals.minutes) > 0) {
                     totalsHTML += `
                         <div class="total-item">
@@ -782,7 +780,7 @@
                         </div>
                     `;
                 }
-                
+
                 if (parseFloat(totals.seconds) > 0) {
                     totalsHTML += `
                         <div class="total-item">
@@ -791,10 +789,10 @@
                         </div>
                     `;
                 }
-                
+
                 totalsHTML += '</div>';
             }
-            
+
             decodeTotals.innerHTML = totalsHTML;
         });
 
@@ -813,10 +811,10 @@
                 minutes: parseInt(document.getElementById('minutes').value) || 0,
                 seconds: parseFloat(document.getElementById('seconds').value) || 0
             };
-            
+
             // Apply cascading for the output only (don't modify inputs)
             const cascaded = cascadeValues(components);
-            
+
             const duration = buildDuration(cascaded);
             currentEncodedString = duration;
             encodeOutput.innerHTML = `${duration}<button class="copy-btn" id="encode-copy-btn" onclick="copyToClipboard('encode')">📋 Copy</button>`;
@@ -830,12 +828,12 @@
         function copyToClipboard(type) {
             const textToCopy = type === 'decode' ? currentExplanation : currentEncodedString;
             const button = document.getElementById(`${type}-copy-btn`);
-            
+
             navigator.clipboard.writeText(textToCopy).then(() => {
                 const originalText = button.innerHTML;
                 button.innerHTML = '✓ Copied!';
                 button.classList.add('copied');
-                
+
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.classList.remove('copied');
